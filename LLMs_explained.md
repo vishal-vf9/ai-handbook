@@ -4,7 +4,8 @@
 
 LLMs such as OpenAI’s ChatGPT and Anthropic’s Claude are AI-powered assistants. When you give them a query or instruction — called a `prompt` — they generate a response tailored to that input.
  
-<img src="images/chatgpt_ui.png" width="600"/><br>
+![Uploading image.png…]()
+
 
 Here’s how LLM works: when you give an LLM a prompt, it generates text - one word at a time. After predicting a word, it adds that word to the prompt and uses the updated prompt to predict the next word. This process repeats again and again until it produces a full response.
 
