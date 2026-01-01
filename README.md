@@ -1,2 +1,2 @@
 # ai-handbook
-This repository contains my notes and experiments in AI. I’ll continue adding more examples over time.
+This repository contains a brief description of how LLM works, AI solution guideline and guardrails and how to implement MCP.
