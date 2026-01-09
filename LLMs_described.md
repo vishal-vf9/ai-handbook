@@ -66,12 +66,33 @@ LLM's uses a model called `pretraining`. Here's a simplified version of how it w
 
    <img src="images/word2vec_animation.gif" width="500"/><br>
 
-Key words: 
+**NOTE:**
 
-- **Weights**: So tokens attend to each other and Attention Weights decide which token matter more for a given context. These dynamics are not store in embeddings. They are calculated on the fly.  In “The cat chased the dog,” the model learns to give more weight to “chased” when shaping “cat”’s embedding, so it reflects the action.
+- Pretraining is expensive
+- Data can be scrapped from web for pre-training but raw web data is noisy, contains duplicates, low quality texts, html tags and irrelevant information. It requires extensive filtering before using the data. Efficient way is to use curated datasets which are already cleaned and organized like [FineWeb](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1)
 
-- **Context Window**: 
+## How do we know when Pre-training is complete: 
 
+Pre-training is unsupervised. No human intervention is required during the pre-training. 
+So the actual model is hidden from the LLM and it is allowed to predict the next token. 
+For Example: If the LLM is allowed to predict the next word in the sentence "The cat sat on the ___ " . Lets say the cat predicts "pond" , which is definetly wrong and it is a big error. The actual word is "mat". So this error is considered as high `loss` where loss is the metrics which is used to measure how far is the model's prediction from the next available token. When it predicts "mat" then the loss is zero. 
+Lower loss means better predictions. Therefore, if the loss values are decreasing over a period of time then the model is learning. 
+
+Loss formula:
+```
+Loss = -log(Predicted Probability of True Next Token)
+```
+This means: if the model gives 80% probability to the correct word, loss = -log(0.8) ≈ 0.22. If it gives 100% probability, loss = -log(1.0) = 0.
+
+## The base model
+
+After pre-training the model that is generated is known as base model, foundational model or pretrained model.
+Pre-training is when LLM reads the entire internet. It learns: 
+- The missing word in a sentence.
+- How to form a sentence
+- That "cat is an animal" is more likely than "cat is a dog"
+
+## Fine-Tuning
 
 
 
